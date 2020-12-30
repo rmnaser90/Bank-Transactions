@@ -23,7 +23,7 @@ app.get('*', function (req, res) {
 });
 
 
-const PORT = 3001
+const PORT = process.env.PORT
 app.listen(PORT, function () {
     console.log("up and listening on port " + PORT);
 })
