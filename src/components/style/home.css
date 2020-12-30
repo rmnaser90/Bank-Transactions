@@ -1,3 +1,4 @@
+@media only screen and (min-width: 772px) {
 @keyframes fadeIn{
     from{
         opacity: 0;
@@ -181,4 +182,10 @@ color: lightcoral;
 }
 .resetFiltersHome:hover{
     font-size: 150%;
+}
+
+.filtertransactionsContainer{
+    height: 100vh;
+    overflow-y: scroll;
+}
 }
