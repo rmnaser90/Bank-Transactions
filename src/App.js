@@ -27,6 +27,42 @@ class App extends Component {
     }
   }
 
+  
+  updateTransactions = async () => {
+    const transactions = await apiManager.getTransactions()
+    let balance = 0
+    const stringFilters = { categories: {}, vendors: {} }
+    transactions.data.forEach(t => {
+      balance += t.amount
+      stringFilters.categories[t.category] = true
+      stringFilters.vendors[t.vendor] = true
+    })
+    const filteredTransactions = transactions.data
+    this.setState({ transactions: transactions.data, balance, filteredTransactions, stringFilters })
+  }
+  
+  deleteTransaction = async (transactionId) => {
+    
+    if (window.confirm("are you sure you want to delete this transaction?") ) {
+      
+      await apiManager.deleteTransaction(transactionId)
+      await this.updateTransactions()
+    }
+    
+  }
+  
+  postTransaction = async (transaction) => {
+    await apiManager.postTransaction(transaction)
+    await this.updateTransactions()
+    const sorting = {
+      amount: 1,
+      vendor: 1,
+      category: 1,
+      date: -1,
+      currentSorting: ""
+    }
+    this.setState({ sorting }, () => this.sort("date"))
+  }
   setFilters = (property, name, checked) => {
     const stringFilters = { ...this.state.stringFilters }
     stringFilters[property][name] = checked
@@ -47,38 +83,7 @@ class App extends Component {
     filters.dateTo = dateTo
     this.setState({ filters }, this.filterDates)
   }
-
-  updateTransactions = async () => {
-    const transactions = await apiManager.getTransactions()
-    let balance = 0
-    const stringFilters = { categories: {}, vendors: {} }
-    transactions.data.forEach(t => {
-      balance += t.amount
-      stringFilters.categories[t.category] = true
-      stringFilters.vendors[t.vendor] = true
-    })
-    const filteredTransactions = transactions.data
-    this.setState({ transactions: transactions.data, balance, filteredTransactions, stringFilters })
-  }
-
-  deleteTransaction = async (transactionId) => {
-    await apiManager.deleteTransaction(transactionId)
-    await this.updateTransactions()
-  }
-
-  postTransaction = async (transaction) => {
-    await apiManager.postTransaction(transaction)
-    await this.updateTransactions()
-    const sorting = {
-      amount: 1,
-      vendor: 1,
-      category: 1,
-      date: -1,
-      currentSorting: ""
-    }
-    this.setState({ sorting }, () => this.sort("date"))
-  }
-
+  
   sort = (property) => {
     const filteredTransactions = [...this.state.filteredTransactions]
     const { sorting } = this.state

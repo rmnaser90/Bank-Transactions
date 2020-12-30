@@ -15,7 +15,6 @@ class Filters extends Component {
         }
     }
     setAllCheckboxes = (property, checked) => {
-        console.log(property, checked);
         const { setFilters } = this.props
         const { categories, vendors } = this.props
         const stringFilters = { categories, vendors }

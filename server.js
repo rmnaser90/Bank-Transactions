@@ -1,8 +1,9 @@
 const express = require('express')
+const dotenv = require('dotenv').config()
 const app = express()
 const mongoose = require('mongoose')
 const api = require('./server/routes/api')
-mongoose.connect("mongodb://localhost/Bank", { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(process.env.MONGO_DB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
 const path= require('path')
 
 app.use(express.static(path.join(__dirname,'build')))
