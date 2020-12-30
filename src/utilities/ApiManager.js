@@ -2,7 +2,7 @@ const axios = require('axios')
 
 class ApiManager {
     constructor() {
-        this.url = 'http://localhost:3001'
+        this.url = '/'
     }
     async getTransactions() {
         return await axios.get(`${this.url}/transactions`)
