@@ -1,5 +1,4 @@
-
-.filters{
+.filters {
     width: 400px;
     position: fixed;
     left: -375px;
@@ -8,52 +7,56 @@
     color: white;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
-transition: 0.3s;
+    transition: 0.3s;
 }
-.filters:hover{
+
+.filters:hover {
     left: 0vw;
 }
-.filters:hover input{
-    opacity:1
+
+.filters:hover input {
+    opacity: 1
 }
-.filterTitle{
-display: block;
-width: 100%;
-text-align: center;
+
+.filterTitle {
+    display: block;
+    width: 100%;
+    text-align: center;
 }
-.filtersContainer{
+
+.filtersContainer {
     width: 100%;
     display: grid;
     grid-template-columns: 1fr;
     align-self: center;
     justify-items: center;
 }
-.filtersContainer input{
+
+.filtersContainer input {
     transition: 0.4s;
     cursor: text;
     opacity: 0;
 }
 
-.dateFilters{
+.dateFilters {
     width: 90%;
 }
-.dateInputs{
-width: 100%;
-display: grid;
-grid-template-columns: 1fr 1fr;
-align-items: center;
-justify-items: center;
+
+.dateInputs {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    justify-items: center;
 }
-.filterSubTitle{
+
+.filterSubTitle {
     display: block;
-width: 100%;
-text-align: start;
+    width: 100%;
+    text-align: start;
 }
 
-
-
-
-.dotsIcon{
+.dotsIcon {
     transform: rotate(-90deg);
     position: absolute;
     right: 2px;
@@ -61,30 +64,34 @@ text-align: start;
     font-size: 120%;
     color: lightgrey;
 }
-.resetFilters{
+
+.resetFilters {
     position: absolute;
     top: 20px;
     right: 40px;
     font-size: 200%;
     transition: 0.1s;
     cursor: pointer;
-
 }
-.resetFilters:hover{
+
+.resetFilters:hover {
     font-size: 230%;
 }
-.checkboxContainer{
+
+.checkboxContainer {
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(3,1fr);
+    grid-template-columns: repeat(3, 1fr);
 }
-.CheckBox{
+
+.CheckBox {
     display: grid;
     grid-template-columns: 1fr 3fr;
     align-items: center;
     justify-items: center;
 }
-.CheckBox input{
+
+.CheckBox input {
     cursor: pointer;
     width: 15px;
 }

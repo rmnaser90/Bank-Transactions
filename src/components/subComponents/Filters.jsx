@@ -13,11 +13,13 @@ class Filters extends Component {
                 dateTo: new Date()
             }
         }
-
     }
+
     resetFilters = () => {
         this.props.setDateFilters(0, Date.now())
+        document.location.reload()
     }
+
     handleDateInput = (e) => {
         const { setDateFilters } = this.props
         const dateInputs = { ...this.state.dateInputs }
@@ -27,7 +29,6 @@ class Filters extends Component {
         this.setState({ dateInputs })
         const { dateFrom, dateTo } = dateInputs
         setDateFilters(Date.parse(dateFrom) - 9999999, Date.parse(dateTo) + 99999999)
-
     }
 
     render() {
@@ -41,19 +42,15 @@ class Filters extends Component {
         for (const vendor in vendors) {
             vendorsArr.push(vendor)
         }
-
         return <div className="filters">
             <h1 className="filterTitle">Filters</h1>
             <div className="resetFilters" onClick={this.resetFilters}><FontAwesomeIcon icon={faSync} />
             </div>
             <FontAwesomeIcon icon={faBraille} className="dotsIcon" />
-
             <div className="filtersContainer">
-
                 <div className="dateFilters">
                     <h2 className="filterSubTitle">Filter Dates:</h2>
                     <div className="dateInputs">
-
                         <h3>From</h3>
                         <h3>To</h3>
                         <input type="date" placeholder="From" value={dateFrom} name="dateFrom" onChange={this.handleDateInput} />
@@ -62,21 +59,16 @@ class Filters extends Component {
                     <div className="categoryFilters">
                         <h2 className="filterSubTitle">Categories:</h2>
                         <div className="checkboxContainer">
-                            {categoriesArr.map(c => <CheckBox key={c} property={"categories"} setFilters={setFilters} name={c} initial={categories[c]}/>)}
-
+                            {categoriesArr.map(c => <CheckBox key={c} property={"categories"} setFilters={setFilters} name={c} initial={categories[c]} />)}
                         </div>
                     </div>
                     <div className="vendorFilters">
                         <h2 className="filterSubTitle">vendors:</h2>
                         <div className="checkboxContainer">
-                        {vendorsArr.map(v => <CheckBox  key={v} property={"vendors"} setFilters={setFilters} name={v} initial={vendors[v]} />)}
+                            {vendorsArr.map(v => <CheckBox key={v} property={"vendors"} setFilters={setFilters} name={v} initial={vendors[v]} />)}
                         </div>
                     </div>
-
                 </div>
-
-
-
             </div>
         </div>
     }

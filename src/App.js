@@ -40,27 +40,25 @@ class App extends Component {
       filteredTransactions
     })
   }
+
   setDateFilters = (dateFrom, dateTo) => {
     const filters = { ...this.state.filters }
     filters.dateFrom = dateFrom
     filters.dateTo = dateTo
     this.setState({ filters }, this.filterDates)
-
   }
+
   updateTransactions = async () => {
     const transactions = await apiManager.getTransactions()
     let balance = 0
     const stringFilters = { categories: {}, vendors: {} }
-
     transactions.data.forEach(t => {
       balance += t.amount
       stringFilters.categories[t.category] = true
       stringFilters.vendors[t.vendor] = true
-
     })
     const filteredTransactions = transactions.data
     this.setState({ transactions: transactions.data, balance, filteredTransactions, stringFilters })
-
   }
 
   deleteTransaction = async (transactionId) => {
@@ -79,12 +77,6 @@ class App extends Component {
       currentSorting: ""
     }
     this.setState({ sorting }, () => this.sort("date"))
-  }
-
-  componentDidMount = async () => {
-    await this.updateTransactions()
-    this.sort("date")
-
   }
 
   sort = (property) => {
@@ -108,22 +100,27 @@ class App extends Component {
     })
   }
 
-
-  render() {
-
-    const { deleteTransaction, postTransaction } = this
-
-    return <Router>
-
-      <Route path="/" exact render={() => <Home state={this.state} setFilters={this.setFilters} setDateFilters={this.setDateFilters} sort={this.sort} deleteTransaction={deleteTransaction} />} />
-      <Route path="/operation" exact render={() => <Operation postTransaction={postTransaction} state={this.state} />} />
-
-
-
-    </Router>
-
+  componentDidMount = async () => {
+    await this.updateTransactions()
+    this.sort("date")
   }
 
+  render() {
+    const { deleteTransaction, postTransaction } = this
+    return <Router>
+
+      <Route path="/" exact render={() => <Home
+        state={this.state} setFilters={this.setFilters}
+        setDateFilters={this.setDateFilters}
+        sort={this.sort}
+        deleteTransaction={deleteTransaction} />} />
+
+      <Route path="/operation" exact render={() => <Operation
+        postTransaction={postTransaction}
+        state={this.state} />} />
+        
+    </Router>
+  }
 }
 
 export default App;

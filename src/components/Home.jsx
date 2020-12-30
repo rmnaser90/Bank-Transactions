@@ -46,15 +46,15 @@ class Home extends Component {
             }
         }
     }
-    resetStringFilters =(checked)=>{
-        const {setFilters}=this.props
-        const {categories,vendors}=this.props.state.stringFilters
-    
+    resetStringFilters = (checked) => {
+        const { setFilters } = this.props
+        const { categories, vendors } = this.props.state.stringFilters
+
         for (const category in categories) {
-            setFilters("categories",category,checked)
+            setFilters("categories", category, checked)
         }
         for (const vendor in vendors) {
-            setFilters("vendors",vendor,checked)
+            setFilters("vendors", vendor, checked)
         }
         document.location.reload()
     }
@@ -64,13 +64,13 @@ class Home extends Component {
     }
 
     getTransactions = () => {
-        const { filteredTransactions , stringFilters} = this.props.state
-        const {categories,vendors} = stringFilters
+        const { filteredTransactions, stringFilters } = this.props.state
+        const { categories, vendors } = stringFilters
         let withdrawels = 0
         let deposites = 0
         filteredTransactions.forEach(t => {
             if (categories[t.category] || vendors[t.vendor]) {
-                
+
                 if (t.amount > 0) {
                     deposites += t.amount
                 } else {
@@ -83,16 +83,15 @@ class Home extends Component {
     }
 
     render() {
-        const { deleteTransaction, sort, setDateFilters,setFilters, state } = this.props
+        const { deleteTransaction, sort, setDateFilters, setFilters, state } = this.props
         const { balance, filteredTransactions, stringFilters } = state
         const { deposites, withdrawels } = this.getTransactions()
         const { categories, vendors } = stringFilters
         return <div className="home">
-            <Filters setDateFilters={setDateFilters} categories={categories} vendors={vendors}setFilters={setFilters} />
+            <Filters setDateFilters={setDateFilters} categories={categories} vendors={vendors} setFilters={setFilters} />
             <h1 className="title">Transactions</h1>
             <div className="transactionsContainer">
                 <div className="accountStatus">
-
                     <div className="balanceContainer">
                         <span> Balance: </span>
                         <span className={`balance ${balance < 0 ? "redTxt" : "greenTxt"}`}> {balance} ₪</span>
@@ -106,7 +105,6 @@ class Home extends Component {
                         <span className={`balance greenTxt`}> {deposites} ₪</span>
                     </div>
                 </div>
-
                 <div className="headers">
                     <div title="click to sort" className="property" onClick={() => sort("date")}>
                         Date  {this.sortingIcon("date")}
@@ -121,19 +119,16 @@ class Home extends Component {
                         Amount  {this.sortingIcon("amount")}
                     </div>
                     <div>
-
                         <Link to="/operation" className="newTransactionBtn" title="Add transaction">
                             <FontAwesomeIcon icon={faPlusCircle} />
                         </Link>
                         <FontAwesomeIcon icon={faSync} className="resetFiltersHome" onClick={this.resetFilters} />
                     </div>
                 </div>
-
                 {!(filteredTransactions.length === 0) ?
                     filteredTransactions.map(t => (categories[t.category] || vendors[t.vendor]) && <Transaction key={t._id} transaction={t} deleteTransaction={deleteTransaction} />) :
                     <div className="nothingTOSshow"> No transactions to show</div>
                 }
-
             </div>
         </div>
     }

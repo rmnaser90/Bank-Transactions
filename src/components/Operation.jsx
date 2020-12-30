@@ -18,8 +18,6 @@ class Operation extends Component {
         this.timer = {}
     }
 
-
-
     handleInput = (e) => {
         const state = { ...this.state }
         const value = e.target.type === "number" ? parseInt(e.target.value) : e.target.value
@@ -27,6 +25,7 @@ class Operation extends Component {
         state[name] = value
         this.setState(state)
     }
+
     emptyInput = () => {
         this.setState({
             amount: 0,
@@ -35,12 +34,14 @@ class Operation extends Component {
             date: Date.now()
         })
     }
+
     resetMsg = () => {
 
         this.setState({
             errorMessage: ""
         })
     }
+
     showMsg = (message) => {
         this.setState({
             errorMessage: ""
@@ -50,11 +51,9 @@ class Operation extends Component {
                 errorMessage: message
             })
         })
-
     }
 
     transaction = async (type) => {
-
         const { amount, vendor, category, date} = this.state
         const { balance } = this.props.state
         if (amount && vendor && category) {
@@ -89,9 +88,11 @@ class Operation extends Component {
             this.showMsg("insufficant funds, you've reached your limit of -500 ₪")
         }
     }
+
     deposit = () => {
         this.transaction(1)
     }
+
     render() {
         const { errorMessage } = this.state
         return <div className="operation">
@@ -109,7 +110,6 @@ class Operation extends Component {
                 </div>
             </div>
         </div>
-
     }
 }
 export default Operation

@@ -9,11 +9,11 @@ class Snackbar extends Component {
     render() {
         const { msg, resetMsg } = this.props
         return <div className="snackBar" onAnimationEnd={resetMsg}>
-            <div className="snackBarClose" onClick={resetMsg}><FontAwesomeIcon icon={faTimes}/> </div>
-            <p className="snackBarMsg"> {msg}</p> 
-          
+            <div className="snackBarClose" onClick={resetMsg}><FontAwesomeIcon icon={faTimes} /> </div>
+            <p className="snackBarMsg"> {msg}</p>
+
             <Link to="/" className="snackBarBtn">Return</Link>
-           
+
 
 
         </div>
