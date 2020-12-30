@@ -14,6 +14,17 @@ class Filters extends Component {
             }
         }
     }
+    setAllCheckboxes = (property, checked) => {
+        console.log(property, checked);
+        const { setFilters } = this.props
+        const { categories, vendors } = this.props
+        const stringFilters = { categories, vendors }
+
+        for (const item in stringFilters[property]) {
+            setFilters(property, item, checked)
+        }
+    }
+
 
     resetFilters = () => {
         this.props.setDateFilters(0, Date.now())
@@ -58,12 +69,21 @@ class Filters extends Component {
                     </div>
                     <div className="categoryFilters">
                         <h2 className="filterSubTitle">Categories:</h2>
+                        <div className="selectingContainer">
+                            <span className="selectAll selector" onClick={() => this.setAllCheckboxes("categories", true)}>Select All</span>
+                            <span className="unSelectAll selector" onClick={() => this.setAllCheckboxes("categories", false)}>Unselect All</span>
+                        </div>
                         <div className="checkboxContainer">
+
                             {categoriesArr.map(c => <CheckBox key={c} property={"categories"} setFilters={setFilters} name={c} initial={categories[c]} />)}
                         </div>
                     </div>
                     <div className="vendorFilters">
                         <h2 className="filterSubTitle">vendors:</h2>
+                        <div className="selectingContainer">
+                            <span className="selectAll selector" onClick={() => this.setAllCheckboxes("vendors", true)}>Select All</span>
+                            <span className="unSelectAll selector" onClick={() => this.setAllCheckboxes("vendors", false)}>Unselect All</span>
+                        </div>
                         <div className="checkboxContainer">
                             {vendorsArr.map(v => <CheckBox key={v} property={"vendors"} setFilters={setFilters} name={v} initial={vendors[v]} />)}
                         </div>

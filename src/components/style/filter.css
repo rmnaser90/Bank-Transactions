@@ -95,3 +95,17 @@
     cursor: pointer;
     width: 15px;
 }
+.selectingContainer{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    justify-items: center;
+}
+.selector{
+    cursor: pointer;
+
+}
+.selector:hover{
+    text-decoration: underline;
+}

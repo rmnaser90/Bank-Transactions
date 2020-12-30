@@ -46,6 +46,8 @@ class Home extends Component {
             }
         }
     }
+
+    
     resetStringFilters = (checked) => {
         const { setFilters } = this.props
         const { categories, vendors } = this.props.state.stringFilters
@@ -56,7 +58,6 @@ class Home extends Component {
         for (const vendor in vendors) {
             setFilters("vendors", vendor, checked)
         }
-        document.location.reload()
     }
     resetFilters = () => {
         this.props.setDateFilters(0, Date.now())
