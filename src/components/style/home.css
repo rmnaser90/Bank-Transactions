@@ -1,0 +1,184 @@
+@keyframes fadeIn{
+    from{
+        opacity: 0;
+    }to{
+        opacity: 1;
+    }
+}
+
+@font-face {
+    font-family: 'MyWebFont';
+    src: url('./Staatliches-Regular.ttf'); 
+  }
+  @font-face {
+    font-family: 'Roboto';
+    src: url('./Roboto/Roboto-Black.ttf'); 
+  }
+
+  body{
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      height: 100vh;
+      min-width: 1100px;
+  }
+  #root{
+      height: 100%;
+      min-width: 1100px;
+  }
+  .home{
+      position: relative;
+  }
+
+.title{
+    display: block;
+    width: 100%;
+    font-size: 250%;
+    text-align: center;
+}
+.backButton{
+    display: block;
+   text-decoration: none;
+   color: black;
+    width: 20vw;
+    font-size: 300%;
+    padding-left: 5vw;
+    transition: 0.4s;
+}
+.backButton:hover{
+    padding-left: 4vw;
+}
+
+
+.transaction{
+    width: 90%;
+    height: 40px;
+    display: grid;
+    grid-template-columns: repeat(4,3fr) 1fr;
+    align-items: center;
+    justify-items: center;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-bottom: 10px;
+    transition: 0.1s;
+    font-size: 120%;
+    font-weight: 450;
+}
+.transaction:hover{
+    background-color: grey;
+    color: white;
+}
+.deleteBtn{
+    cursor: pointer;
+    transition: 0.1s;
+    font-size: 125%
+}
+.deleteBtn:hover{
+    font-size: 150%;
+}
+.accountStatus{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+
+}
+.balanceContainer{
+    width: 90%;
+    height: 200px;
+    margin-left: 5%;
+    margin-right: 5%;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    align-items: center;
+    justify-items: center;
+    text-align: center;
+    font-size: 200%;
+}
+.balance{
+    animation-name: fadeIn;
+    animation-duration: 0.6s;
+    align-self: flex-start;
+    font-size: 150%;
+    font-weight: 700;
+}
+.redTxt{
+color: lightcoral;
+}
+.greenTxt{
+    color: lightgreen;
+}
+.Withdrawels{
+    border-left: 2px solid grey;
+    border-right: 2px solid grey;
+}
+.amount{
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    
+}
+.red{
+
+    background-color: lightcoral;
+}
+.green{
+
+    background-color: lightgreen;
+}
+.headers{
+    font-weight: bolder;
+    width: 90%;
+    height: 40px;
+    margin-left: 5%;
+    margin-right: 5%;
+    display: grid;
+    grid-template-columns: repeat(4,3fr) 1fr;
+    align-items: center;
+    justify-items: center;
+    margin-bottom: 10px;
+    border-bottom: 2px solid lightslategray;
+    font-size: 140%;
+}
+.property{
+    cursor: pointer;
+   transition: 0.2s;
+}
+.filterIcon{
+    font-size: 70%;
+}
+.property:hover{
+    text-shadow: 0px 0px 5px  grey;
+}
+
+.newTransactionBtn{
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 125%
+}
+.newTransactionBtn:hover{
+    font-size: 150%;
+}
+.nothingTOSshow{
+    width: 100%;
+    height: 30vh;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    color: grey;
+    font-size: 3vw;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+}
+.resetFiltersHome{
+ 
+    font-size: 120%;
+    transition: 0.1s;
+    cursor: pointer;
+    margin-left: 5px;
+
+}
+.resetFiltersHome:hover{
+    font-size: 150%;
+}
