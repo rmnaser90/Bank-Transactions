@@ -2,6 +2,7 @@ import { Component } from 'react'
 import Transaction from './subComponents/transaction'
 // import { Link } from 'react-router-dom'
 import './style/home.css'
+import './style/homeMobile.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowDown, faArrowUp, faPlusCircle, faSync } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom'
@@ -58,10 +59,12 @@ class Home extends Component {
         for (const vendor in vendors) {
             setFilters("vendors", vendor, checked)
         }
+        
     }
     resetFilters = () => {
         this.props.setDateFilters(0, Date.now())
         this.resetStringFilters(true)
+        document.location.reload()
     }
 
     getTransactions = () => {
@@ -89,7 +92,7 @@ class Home extends Component {
         const { deposites, withdrawels } = this.getTransactions()
         const { categories, vendors } = stringFilters
         return <div className="home">
-            <Filters setDateFilters={setDateFilters} categories={categories} vendors={vendors} setFilters={setFilters} />
+            <Filters setDateFilters={setDateFilters} categories={categories} vendors={vendors} setFilters={setFilters}/>
             <h1 className="title">Transactions</h1>
             <div className="transactionsContainer">
                 <div className="accountStatus">
@@ -119,17 +122,20 @@ class Home extends Component {
                     <div title="click to sort" className="property " onClick={() => sort("amount")}>
                         Amount  {this.sortingIcon("amount")}
                     </div>
-                    <div>
+                    <div className="tableBtns">
                         <Link to="/operation" className="newTransactionBtn" title="Add transaction">
                             <FontAwesomeIcon icon={faPlusCircle} />
                         </Link>
                         <FontAwesomeIcon icon={faSync} className="resetFiltersHome" onClick={this.resetFilters} />
                     </div>
                 </div>
+                <div className="filtertransactionsContainer">
+
                 {!(filteredTransactions.length === 0) ?
                     filteredTransactions.map(t => (categories[t.category] || vendors[t.vendor]) && <Transaction key={t._id} transaction={t} deleteTransaction={deleteTransaction} />) :
                     <div className="nothingTOSshow"> No transactions to show</div>
                 }
+                </div>
             </div>
         </div>
     }

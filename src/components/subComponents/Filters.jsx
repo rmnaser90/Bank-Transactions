@@ -2,6 +2,7 @@ import { Component } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBraille, faSync } from '@fortawesome/free-solid-svg-icons'
 import '../style/filter.css'
+import '../style/filterMobile.css'
 import CheckBox from './Checkbox'
 
 class Filters extends Component {
@@ -26,8 +27,10 @@ class Filters extends Component {
 
 
     resetFilters = () => {
+        
         this.props.setDateFilters(0, Date.now())
-        document.location.reload()
+        this.setAllCheckboxes("categories",true)
+        this.setAllCheckboxes("vendors",true)
     }
 
     handleDateInput = (e) => {
@@ -53,13 +56,12 @@ class Filters extends Component {
             vendorsArr.push(vendor)
         }
         return <div className="filters">
-            <h1 className="filterTitle">Filters</h1>
             <div className="resetFilters" onClick={this.resetFilters}><FontAwesomeIcon icon={faSync} />
             </div>
             <FontAwesomeIcon icon={faBraille} className="dotsIcon" />
             <div className="filtersContainer">
                 <div className="dateFilters">
-                    <h2 className="filterSubTitle">Filter Dates:</h2>
+                    
                     <div className="dateInputs">
                         <h3>From</h3>
                         <h3>To</h3>
