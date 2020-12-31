@@ -109,14 +109,14 @@ class App extends Component {
     const vh = window.innerHeight;
     const vw = window.innerWidth;
     console.log(vh);
-    window.document.getElementsByTagName('body')[0].style.height = vh
+    window.document.getElementsByClassName('filters')[0].style.top = 0.95 * vh
     window.document.getElementsByTagName('body')[0].style.width = vw
     window.addEventListener('resize', () => {
       const vhh = window.innerHeight;
       const vw = window.innerWidth;
-      window.document.getElementsByTagName('body')[0].style.height = vhh
+      window.document.getElementsByClassName('filters')[0].style.top = 0.95 * vhh
       window.document.getElementsByTagName('body')[0].style.width = vw
-      console.log(vw,vhh);
+      console.log(vw, vhh);
     })
     await this.updateTransactions()
     this.sort("date")
@@ -124,7 +124,7 @@ class App extends Component {
 
   render() {
     const { deleteTransaction, postTransaction } = this
-  
+
     return <Router>
 
       <Route path="/" exact render={() => <Home

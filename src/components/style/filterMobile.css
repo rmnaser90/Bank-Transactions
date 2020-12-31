@@ -1,8 +1,8 @@
 @media only screen and (max-width: 771px) {
     .filters {
         width: 90vw;
-        left: 5vw;
-        top: 95vh;
+        left: 5%;
+        top: 95%;
         padding-top: 10vh;
         overflow-y:auto;
         position: fixed;
@@ -16,8 +16,8 @@
         z-index: 999;
     }
     .filters:hover {
-        padding-top: 5vh;
-        top: 10vh;
+        padding-top: 5%;
+        top: 10%;
         opacity: 1;
        
     }
