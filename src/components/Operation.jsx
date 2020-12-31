@@ -25,6 +25,13 @@ class Operation extends Component {
         state[name] = value
         this.setState(state)
     }
+    
+    toProperCase = (str)=>{
+        const arr = str.split('')
+        const firstLetter = arr[0].toUpperCase()
+        arr.splice(0,1)
+        return firstLetter + arr.join('').toLowerCase()
+    }
 
     emptyInput = () => {
         this.setState({
@@ -59,8 +66,8 @@ class Operation extends Component {
         if (amount && vendor && category) {
             await this.props.postTransaction({
                 amount: amount * type,
-                vendor,
-                category,
+                vendor: this.toProperCase(vendor),
+                category: this.toProperCase(category),
                 date
             })
             this.showMsg(`Transaction was successfuly added, your current balance is ${balance + amount * type}`)
