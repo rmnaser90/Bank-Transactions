@@ -27,7 +27,7 @@ class App extends Component {
     }
   }
 
-  
+
   updateTransactions = async () => {
     const transactions = await apiManager.getTransactions()
     let balance = 0
@@ -40,17 +40,17 @@ class App extends Component {
     const filteredTransactions = transactions.data
     this.setState({ transactions: transactions.data, balance, filteredTransactions, stringFilters })
   }
-  
+
   deleteTransaction = async (transactionId) => {
-    
-    if (window.confirm("are you sure you want to delete this transaction?") ) {
-      
+
+    if (window.confirm("are you sure you want to delete this transaction?")) {
+
       await apiManager.deleteTransaction(transactionId)
       await this.updateTransactions()
     }
-    
+
   }
-  
+
   postTransaction = async (transaction) => {
     await apiManager.postTransaction(transaction)
     await this.updateTransactions()
@@ -83,7 +83,7 @@ class App extends Component {
     filters.dateTo = dateTo
     this.setState({ filters }, this.filterDates)
   }
-  
+
   sort = (property) => {
     const filteredTransactions = [...this.state.filteredTransactions]
     const { sorting } = this.state
@@ -106,12 +106,25 @@ class App extends Component {
   }
 
   componentDidMount = async () => {
+    const vh = window.innerHeight;
+    const vw = window.innerWidth;
+    console.log(vh);
+    window.document.getElementsByTagName('body')[0].style.height = vh
+    window.document.getElementsByTagName('body')[0].style.width = vw
+    window.addEventListener('resize', () => {
+      const vhh = window.innerHeight;
+      const vw = window.innerWidth;
+      window.document.getElementsByTagName('body')[0].style.height = vhh
+      window.document.getElementsByTagName('body')[0].style.width = vw
+      console.log(vw,vhh);
+    })
     await this.updateTransactions()
     this.sort("date")
   }
 
   render() {
     const { deleteTransaction, postTransaction } = this
+  
     return <Router>
 
       <Route path="/" exact render={() => <Home
@@ -123,7 +136,7 @@ class App extends Component {
       <Route path="/operation" exact render={() => <Operation
         postTransaction={postTransaction}
         state={this.state} />} />
-        
+
     </Router>
   }
 }
