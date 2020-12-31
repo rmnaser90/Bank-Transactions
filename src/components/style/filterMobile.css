@@ -2,7 +2,7 @@
     .filters {
         width: 90vw;
         left: 5vw;
-        top: 85vh;
+        top: 80vh;
         padding-top: 10vh;
         overflow-y:auto;
         position: fixed;
@@ -24,14 +24,7 @@
     .filters:hover input {
         opacity: 1
     }
-    .filterTitle {
-        display: block;
-        width: 100%;
-        text-align: center;
-        
-        margin-bottom: 5px;
-        font-size: 7vw;
-    }
+ 
     .filtersContainer {
         width: 100%;
         display: grid;
@@ -48,11 +41,15 @@
         width: 90%;
     }
     .dateInputs {
+        opacity: 0;
         width: 100%;
         display: grid;
         grid-template-columns: 1fr 1fr;
         align-items: center;
         justify-items: center;
+    }
+    .filters:hover .dateInputs{
+        opacity: 1;
     }
     .filterSubTitle {
         display: block;
@@ -73,12 +70,16 @@
         color: lightgrey;
     }
     .resetFilters {
+        opacity: 0;
         position: absolute;
         top: 2vh;
         right: 2vh;
         font-size: 200%;
         transition: 0.1s;
         cursor: pointer;
+    }
+    .filters:hover .resetFilters{
+        opacity: 1;
     }
     .resetFilters:hover {
         font-size: 230%;

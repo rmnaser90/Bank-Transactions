@@ -19,9 +19,9 @@ app.use(express.urlencoded({ extended: false }))
 // })
 app.use('/', api)
 
-// app.get('*', function (req, res) {
-//     res.sendFile(path.join(__dirname, 'build', 'index.html'));
-// });
+app.get('*', function (req, res) {
+    res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
 
 
 const PORT = process.env.PORT
