@@ -1,0 +1,118 @@
+@media only screen and (max-width: 771px) {
+    .filters {
+        width: 90vw;
+        left: 5%;
+        top: 95%;
+        padding-top: 10vh;
+        overflow-y:auto;
+        position: fixed;
+        min-height: 100vh;
+        background-color: grey;
+        color: white;
+        border-top-right-radius: 10px;
+        border-top-left-radius: 10px;
+        transition: 0.3s;
+        opacity: 0.8;
+        z-index: 999;
+    }
+    .filters:hover {
+        padding-top: 5%;
+        top: 10%;
+        opacity: 1;
+       
+    }
+    .filters:hover input {
+        opacity: 1
+    }
+ 
+    .filtersContainer {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr;
+        align-self: center;
+        justify-items: center;
+    }
+    .filtersContainer input {
+        transition: 0.4s;
+        cursor: text;
+        opacity: 0;
+    }
+    .dateFilters {
+        width: 90%;
+    }
+    .dateInputs {
+        opacity: 0;
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+        justify-items: center;
+    }
+    .filters:hover .dateInputs{
+        opacity: 1;
+    }
+    .filterSubTitle {
+        display: block;
+        width: 100%;
+        text-align: start;
+        margin: 1vh;
+        font-size: 6vw;
+    }
+    h3{
+        margin: 5px;
+    }
+    .dotsIcon {
+        position: absolute;
+        right: 45%;
+        top: 1vh;
+        font-size: 130%;
+        opacity: 1;
+        color: lightgrey;
+    }
+    .resetFilters {
+        opacity: 0;
+        position: absolute;
+        top: 2vh;
+        right: 2vh;
+        font-size: 200%;
+        transition: 0.1s;
+        cursor: pointer;
+    }
+    .filters:hover .resetFilters{
+        opacity: 1;
+    }
+    .resetFilters:hover {
+        font-size: 230%;
+    }
+    .checkboxContainer {
+        width: 100%;
+        display: grid;
+        height: 25vh;
+        overflow-y: auto;
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .CheckBox {
+        display: grid;
+        grid-template-columns: 1fr 3fr;
+        align-items: center;
+        justify-items: center;
+        font-size: 90%;
+    }
+    .CheckBox input {
+        cursor: pointer;
+        width: 20px;
+    }
+    .selectingContainer {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+        justify-items: center;
+    }
+    .selector {
+        cursor: pointer;
+    }
+    .selector:hover {
+        text-decoration: underline;
+    }
+}
